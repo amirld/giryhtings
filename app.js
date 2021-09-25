@@ -3,11 +3,8 @@ const app = express();
 
 const { items } = require('./item');
 const { users } = require('./user');
-const cors = require("cors")
 const Mongoose = require('mongoose');
 
-
-// app.use(cors());
 app.use(express.json());       
 app.use(express.urlencoded( {extended: false}));
 

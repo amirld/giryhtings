@@ -31,7 +31,7 @@ app.get('/home/:limit/:page', (req, res)=>{
     const limit = Number(req.params.limit)
     const skip = (Number(req.params.page) - 1) * limit
     
-    Items.find().sort({ Price: -1 })
+    items.find().sort({ Price: -1 })
     .limit(limit).skip(skip)
         .then((result)=>{
             res.status(200).send(result);
@@ -44,7 +44,7 @@ app.get('/home/:limit/:page', (req, res)=>{
 
 // single item api 
 app.get('/item/:id', (req, res)=>{
-    Items.findById(req.params.id)
+    items.findById(req.params.id)
     .then((result)=>{
         res.status(200).json(result)
     })
@@ -56,7 +56,7 @@ app.get('/category/:category/:limit/:page', (req, res)=>{
     const limit = Number(req.params.limit)
     const skip = (Number(req.params.page) - 1) * limit
     
-    Items.find( { category: req.params.category }).sort({ Price: -1 }).limit(limit).skip(skip)
+    items.find( { category: req.params.category }).sort({ Price: -1 }).limit(limit).skip(skip)
     .then((result)=>{
         res.status(200).json(result) 
     })
@@ -106,7 +106,7 @@ app.post('/user/login', (req, res)=>{
 
 // ADD like item
 app.get('/user/likeitem/:userid/:itemid', (req, res)=>{
-    Items.findById(req.params.itemid).then((result)=>{
+    items.findById(req.params.itemid).then((result)=>{
         const {Title, Images, Price, Category} = result
         const item = {
             _id: req.params.itemid, 
@@ -151,7 +151,7 @@ app.delete("/user/delete/likeitem/:userid/:itemid", async (req, res) => {
 
 // ADD cart item
 app.get('/user/cartitem/:userid/:itemid', (req, res)=>{
-    Items.findById(req.params.itemid).then((result)=>{
+    items.findById(req.params.itemid).then((result)=>{
         const {Title, Images, Price, Category} = result
         const item = {
             _id: req.params.itemid, 

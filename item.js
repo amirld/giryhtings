@@ -51,4 +51,4 @@ const items = mongoose.model('test559',itemSchema);
 
 
 
-module.exports = items
+module.exports = { items }

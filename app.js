@@ -1,24 +1,23 @@
 const express = require('express');
 const app = express();
 
-const Items = require('./item');
-const Users = require('./user');
+const { items } = require('./item');
+const { users } = require('./user');
 const cors = require("cors")
 const Mongoose = require('mongoose');
-const { removeAllListeners, findByIdAndDelete, findByIdAndRemove, rawListeners } = require('./item');
-const users = require('./user');
-const items = require('./item');
-const PORT = process.env.PORT || 5000;
 
 
 app.use(cors());
 app.use(express.json());       
 app.use(express.urlencoded( {extended: false}));
 
+
+const PORT = process.env.PORT || 5000;
+
 Mongoose.connect("mongodb+srv://amir:amir.556655@cluster0.4ur0v.mongodb.net/gt-db?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  }).then(()=>{app.listen(PORT, ()=> {console.log("lestenning post 3000");})})
+  }).then(()=>{app.listen(PORT, ()=> {console.log("lestenning http");})})
 .catch((err)=>{
 	console.log(err);
 	}

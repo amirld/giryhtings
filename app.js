@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
+
 
 const { items } = require('./item');
 const { users } = require('./user');
@@ -7,7 +9,9 @@ const Mongoose = require('mongoose');
 
 app.use(express.json());       
 app.use(express.urlencoded( {extended: false}));
-
+app.use(cors({
+    origin: '*'
+}));
 
 const PORT = process.env.PORT || 5000;
 

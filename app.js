@@ -15,12 +15,14 @@ app.use(cors());
 app.use(express.json());       
 app.use(express.urlencoded( {extended: false}));
 
-Mongoose.connect('mongodb+srv://amir:amir.556655@cluster0.4ur0v.mongodb.net/gt-db?retryWrites=true&w=majority').then(()=>{app.listen(PORT, ()=> {console.log(`lestenning post ${PORT}`);})})
+Mongoose.connect("mongodb+srv://amir:amir.556655@cluster0.4ur0v.mongodb.net/gt-db?retryWrites=true&w=majority", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }).then(()=>{app.listen(PORT, ()=> {console.log("lestenning post 3000");})})
 .catch((err)=>{
 	console.log(err);
 	}
 )
-
 
 
 //  public api's 
